@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="ja">
 <head>
@@ -44,7 +42,85 @@
     @media(max-width:860px){
       .hero h1{font-size:32px}
     }
+
+/* モーダルの背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* モーダル本体 */
+.modal-content {
+  background: #fff;
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+body.modal-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width);
+}
+
+/* × ボタン */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* モーダル内部レイアウト */
+.modal-body {
+  display: flex;
+  gap: 20px;
+}
+
+.modal-body img {
+  width: 45%;
+  border-radius: 10px;
+}
+
+.modal-text {
+  width: 55%;
+}
+
+.modal-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.modal-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* フェードイン前の状態 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 表示された状態 */
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
+
 </head>
 <body>
   <header>
@@ -58,19 +134,34 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero fade-in">
       <img src="rogo.png" alt="ロゴ" width="280" height="200">
       <p>神秘と戦略が交錯する新しいカードゲームの世界へようこそ。</p>
-
     </section>
-<section id="explanation" style="text-align:center;padding:40px 28px">
+
+    <section id="explanation" class="fade-in" style="text-align:center;padding:40px 28px">
       <h2 class="section-title">ルール説明</h2>
       <p>従来のチェスにカードゲームの要素が＋</p>
       <p>チェス</p>
       <p>チェス</p>
     </section>
 
-    <section id="cards">
+    <section id="cards" class="fade-in">
+<div id="cardModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <div class="modal-body">
+      <img id="modalImage" src="" alt="">
+      <div class="modal-text">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+      <section id="chat" style="padding:0 28px 40px">
       <h2 class="section-title">カード紹介</h2>
       <div class="cards">
         <div class="card-item">
@@ -83,99 +174,99 @@
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
         <div class="card-item">
           <img src="https://placehold.co/300x420" alt="ドラゴン">
           <div class="card-body">
-            <h3>ドラゴン</h3>
-            <p>火属性の伝説級ドラゴン。盤面に出ると相手全体に炎ダメージを与える。</p>
+            <h3>カード名</h3>
+            <p>カード説明</p>
           </div>
         </div>
 
@@ -183,284 +274,63 @@
       </div>
     </section>
 
-    <section id="chat" style="padding:0 28px 40px">
-      <h2 class="section-title">チャット欄</h2>
-
-<html lang="ja">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>YouTube風コメント欄</title>
-<style>
-  :root{
-    --bg:#ffffff; --card:#f9f9f9; --muted:#606060; --accent:#065fd4;
-    --text:#111111; --accent-press:#054bb0;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
-    background:var(--bg); color:var(--text); padding:28px;
-  }
-
-  .comments-wrap{max-width:900px; margin:0 auto; display:grid; gap:16px;}
-
-  /* 検索・並び替えバー */
-  .top-bar{
-    display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center;
-  }
-  .search-bar{
-    flex:1; display:flex; gap:8px; align-items:center;
-    padding:8px; border:1px solid #ccc; border-radius:8px; background:#fff;
-  }
-  .search-bar input{flex:1; border:none; outline:none; font-size:14px;}
-  .sort-btn{
-    background:#f1f1f1; border:1px solid #ccc; padding:8px 12px; border-radius:8px;
-    cursor:pointer; font-size:14px; color:#333;
-  }
-  .sort-btn:hover{background:#e6e6e6;}
-
-  /* composer */
-  .composer{
-    background:var(--card);
-    border:1px solid #ddd; padding:14px; border-radius:12px; display:flex; gap:12px; align-items:flex-start;
-  }
-  .avatar{width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#5dd7ff,#7386ff);}
-  .composer-main{flex:1}
-  input#nickname{
-    width:100%; margin-bottom:8px; padding:6px; border-radius:6px; border:1px solid #ccc; background:#fff; color:var(--text);
-  }
-  textarea#newComment{
-    width:100%; min-height:72px; resize:vertical; border-radius:8px; padding:10px; font-size:14px;
-    border:1px solid #ccc; background:#fff; color:var(--text);
-    outline:none;
-  }
-  .composer-row{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:8px;}
-  .btn{
-    background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600;
-  }
-  .btn:active{background:var(--accent-press)}
-  .btn.ghost{background:#f1f1f1; color:var(--muted); border:1px solid #ddd}
-  .counter{color:var(--muted); font-size:13px}
-
-  /* comments list */
-  .list{display:flex; flex-direction:column; gap:12px;}
-  .comment-card{
-    display:flex; gap:12px; padding:12px; border-radius:10px; background:var(--card);
-    border:1px solid #ddd;
-  }
-  .comment-body{flex:1}
-  .meta{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-  .name{font-weight:700; font-size:14px}
-  .time{color:var(--muted); font-size:13px}
-  .text{margin-top:8px; font-size:15px; line-height:1.5; color:var(--text)}
-  .actions{display:flex; gap:8px; margin-top:10px; align-items:center}
-  .action-btn{background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:13px; padding:6px 8px; border-radius:6px}
-  .action-btn:hover{color:var(--text); background:#eee}
-  .like-count{font-weight:700; margin-left:6px; color:var(--accent)}
-  .reply-form{margin-top:10px; display:none; gap:8px}
-  .reply-form textarea{min-height:56px; border:1px solid #ccc; border-radius:6px; padding:6px; width:100%}
-  .replies{margin-top:10px; margin-left:56px; display:flex; flex-direction:column; gap:8px}
-  .avatar.small{width:36px;height:36px; flex:0 0 36px}
-
-  mark{background:yellow; padding:0 2px; border-radius:2px;}
-</style>
-</head>
-<body>
-<div class="comments-wrap" id="commentsWrap">
-  <h2 style="margin:0 0 4px 0">コメント</h2>
-
-  <!-- 検索・並び替えバー -->
-  <div class="top-bar">
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="コメントを検索..." />
-    </div>
-    <button id="sortBtn" class="sort-btn">🔽 新しい順</button>
-  </div>
-
-  <!-- コメント投稿欄 -->
-  <div class="composer">
-    <div class="avatar"></div>
-    <div class="composer-main">
-      <input id="nickname" type="text" placeholder="ニックネーム" maxlength="20" />
-      <textarea id="newComment" maxlength="1000" placeholder="コメントを入力..."></textarea>
-      <div class="composer-row">
-        <div class="counter" id="composerCounter">0 / 1000</div>
-        <div style="display:flex; gap:8px">
-          <button class="btn ghost" id="clearBtn">クリア</button>
-          <button class="btn" id="postBtn">投稿</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- コメントリスト -->
-  <div class="list" id="commentList"></div>
-</div>
+    <section id="chat" class="fade-in" style="padding:0 28px 40px">
+      <h2 class="section-title">チャット</h2>
+    </section>
+</main>
 
 <script>
-function timeStampLocale(d){
-  const now = new Date();
-  const diff = Math.floor((now - d) / 1000);
-  if(diff < 60) return diff + "秒前";
-  if(diff < 3600) return Math.floor(diff/60) + "分前";
-  if(diff < 86400) return Math.floor(diff/3600) + "時間前";
-  return d.toLocaleString('ja-JP');
+function getScrollbarWidth() {
+  return window.innerWidth - document.documentElement.clientWidth;
 }
-function createAvatarGradient(seed){
-  const colors = [
-    "linear-gradient(135deg,#5dd7ff,#7386ff)",
-    "linear-gradient(135deg,#ffb86b,#ff7aa2)",
-    "linear-gradient(135deg,#a5ffb6,#6be7ff)",
-    "linear-gradient(135deg,#c59bff,#7ed6a3)",
-  ];
-  return colors[Math.abs(seed) % colors.length];
-}
-const newComment = document.getElementById('newComment');
-const nicknameInput = document.getElementById('nickname');
-const composerCounter = document.getElementById('composerCounter');
-const clearBtn = document.getElementById('clearBtn');
-const postBtn = document.getElementById('postBtn');
-const commentList = document.getElementById('commentList');
-const searchInput = document.getElementById('searchInput');
-const sortBtn = document.getElementById('sortBtn');
-let allComments = [];
-let sortOrder = "newest"; // "newest" or "oldest"
+document.body.style.setProperty("--scrollbar-width", getScrollbarWidth() + "px");
+document.body.classList.add("modal-open");
 
-newComment.addEventListener('input', ()=>{
-  composerCounter.textContent = newComment.value.length + " / " + newComment.maxLength;
-});
-clearBtn.addEventListener('click', ()=>{ newComment.value = ""; newComment.dispatchEvent(new Event('input')); });
-postBtn.addEventListener('click', ()=>{
-  const text = newComment.value.trim();
-  const nick = nicknameInput.value.trim() || "匿名";
-  if(!text) { alert('コメントを入力してください。'); return; }
-  const comment = makeCommentObject({author: nick, text});
-  allComments.push(comment); // 新しいコメントを末尾に追加
-  renderComments();
-  newComment.value = ""; newComment.dispatchEvent(new Event('input'));
-});
+  // モーダル要素
+  const modal = document.getElementById("cardModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const closeBtn = document.querySelector(".close");
 
-sortBtn.addEventListener('click', ()=>{
-  sortOrder = (sortOrder === "newest") ? "oldest" : "newest";
-  sortBtn.textContent = sortOrder === "newest" ? "🔽 新しい順" : "🔼 古い順";
-  renderComments();
-});
+  // カードを取得
+  const cards = document.querySelectorAll(".card-item");
 
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const img = card.querySelector("img").src;
+      const title = card.querySelector("h3").innerText;
+      const desc = card.querySelector("p").innerText;
 
-searchInput.addEventListener('input', ()=>{ renderComments(); });
+      modalImg.src = img;
+      modalTitle.innerText = title;
+      modalDesc.innerText = desc;
 
-function makeCommentObject({author="匿名", text="", time=new Date(), likes=0, replies=[]}){
-  return {id: "c"+Math.random().toString(36).slice(2,9), author, text, time:new Date(time), likes:likes||0, replies:replies||[]};
-}
-
-function highlight(text, keyword){
-  if(!keyword) return escapeHtml(text);
-  const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")})`,"gi");
-  return escapeHtml(text).replace(regex, "<mark>$1</mark>");
-}
-
-function renderComments(){
-  commentList.innerHTML = "";
-  const keyword = searchInput.value.trim();
-  let list = [...allComments];
-  list.sort((a,b)=>{
-    return sortOrder === "newest" ? b.time - a.time : a.time - b.time;
+      modal.style.display = "flex";
+    });
   });
-  list.forEach(c => {
-    if(matchesKeyword(c, keyword)){
-      appendComment(c, keyword);
+
+  // 閉じる
+  closeBtn.onclick = () => modal.style.display = "none";
+  window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+document.body.classList.remove("modal-open");
+
+
+// 画面に入ったらクラスを付ける
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target); // 一度表示したら解除
     }
   });
-}
+}, { threshold: 0.2 });
 
-function matchesKeyword(comment, keyword){
-  if(!keyword) return true;
-  if(comment.author.toLowerCase().includes(keyword.toLowerCase()) || comment.text.toLowerCase().includes(keyword.toLowerCase())){
-    return true;
-  }
-  if(comment.replies && comment.replies.some(r=>matchesKeyword(r, keyword))){
-    return true;
-  }
-  return false;
-}
+fadeElements.forEach(el => observer.observe(el));
 
-function appendComment(commentObj, keyword="", parentElement=null){
-  const li = document.createElement('div');
-  li.className = 'comment-card';
-  li.dataset.id = commentObj.id;
-
-  const avatar = document.createElement('div');
-  avatar.className = 'avatar';
-  avatar.style.background = createAvatarGradient(commentObj.author.length);
-
-  const body = document.createElement('div');
-  body.className = 'comment-body';
-  body.innerHTML = `
-    <div class="meta">
-      <div class="name">${highlight(commentObj.author, keyword)}</div>
-      <div class="time">${timeStampLocale(commentObj.time)}</div>
-    </div>
-    <div class="text">${highlight(commentObj.text, keyword).replace(/\\n/g,'<br>')}</div>
-    <div class="actions">
-      <button class="action-btn likeBtn">👍 <span class="like-count">${commentObj.likes}</span></button>
-      <button class="action-btn replyToggle">返信</button>
-    </div>
-    <div class="reply-form" style="display:none">
-      <textarea placeholder="返信を入力..." maxlength="800"></textarea>
-      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:6px">
-        <button class="btn ghost cancelReply">キャンセル</button>
-        <button class="btn sendReply">返信を投稿</button>
-      </div>
-    </div>
-    <div class="replies"></div>
-  `;
-
-  li.appendChild(avatar);
-  li.appendChild(body);
-  const container = parentElement ? parentElement.querySelector('.replies') : commentList;
-  container.appendChild(li);
-
-  if(Array.isArray(commentObj.replies) && commentObj.replies.length){
-    commentObj.replies.forEach(r => appendComment(makeCommentObject(r), keyword, li));
-  }
-
-  const likeBtn = body.querySelector('.likeBtn');
-  likeBtn.addEventListener('click', ()=>{
-    const countSpan = likeBtn.querySelector('.like-count');
-    let count = parseInt(countSpan.textContent||"0",10);
-    countSpan.textContent = ++count;
-  });
-
-  const replyToggle = body.querySelector('.replyToggle');
-  const replyForm = body.querySelector('.reply-form');
-  const cancelReply = body.querySelector('.cancelReply');
-  const sendReply = body.querySelector('.sendReply');
-  replyToggle.addEventListener('click', ()=>{
-    replyForm.style.display = replyForm.style.display==='none' ? 'block':'none';
-  });
-  cancelReply.addEventListener('click', ()=>{ replyForm.style.display='none'; });
-  sendReply.addEventListener('click', ()=>{
-    const ta = replyForm.querySelector('textarea');
-    const text = ta.value.trim();
-    const nick = nicknameInput.value.trim() || "匿名";
-    if(!text) return;
-    const replyObj = makeCommentObject({author: nick, text});
-    commentObj.replies.push(replyObj);
-    renderComments();
-  });
-}
-
-function escapeHtml(str){
-  return String(str).replace(/[&<>"']/g, (m)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
 </script>
-</body>
-</html>
-
-
-    </section>
-   
-  </main>
 
  </body>
 </html>
